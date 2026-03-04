@@ -36,6 +36,16 @@ public class ChainedHash{
         table[i] = newNode;
       else prev.next = newNode;
     }
-    
+    public String lookup(String key) {
+      int i = hash(key);
+      Node head = table[i];
+
+      while(head != null) {
+        if (head.key.equals(key))
+          return head.value;
+        head = head.next;
+      }
+      return null;
+    }
   }
 }
