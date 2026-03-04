@@ -31,4 +31,26 @@ public class Main {
         }
         return total / 1000.0 / REPETITIONS;
     }
+    public static void main(String[] args) {
+
+        String[][] data = generateData();
+
+        double[] alphas = {0.75, 0.80, 0.85, 0.90, 0.95};
+
+        System.out.println("Average time in seconds");
+        System.out.println("-------------------------------------------------------------");
+        System.out.printf("%-10s %-10s %-15s %-15s\n",
+                "Alpha", "Entries", "OpenHash", "ChainedHash");
+
+        for (double alpha : alphas) {
+            int entries = (int)(alpha * 1000000);
+            int m = (int)(entries / alpha);
+            double openTime = timeOpen(data, entries, m);
+            double chainedTime = timeChained(data, entries, m);
+
+            System.out.printf("%-10.2f %-10d %-15.6f %-15.6f\n",
+                    alpha, entries, openTime, chainedTime);
+        }
+    }
+}
 
