@@ -64,6 +64,8 @@ public class ChainedHash{
       }
       return null;
     }
-  
+    public boolean isInTable(String key) {
+      return lookup(key) != null;
+    }
   }
 }
