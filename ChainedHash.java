@@ -47,5 +47,23 @@ public class ChainedHash{
       }
       return null;
     }
+    public String remove(String key) {
+      int i = hash(key);
+      Node head = table[i], prev = null;
+
+      while (head != null) {
+        if (head.key.equals(key)) {
+          if (prev == null)
+            table[i] = head.next;
+          else
+            prev.next = head.next;
+          return head.value;
+        }
+        prev = head;
+        head = head.next;
+      }
+      return null;
+    }
+  
   }
 }
