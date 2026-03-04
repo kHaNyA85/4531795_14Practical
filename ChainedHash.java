@@ -7,6 +7,13 @@ public class ChainedHash{
       value = v;
       next = null;
     }
+    private Node[]table;
+    private int m;
+
+    public ChainedHash(int m) {
+      this.m = m;
+      table = new Node[m + 1];
+    }
     
   }
 }
