@@ -32,5 +32,17 @@ public class OPenHash {
     table[i] = new Entry(key, value);
     size++;
   }
+
+  public String lookup(String key) {
+    int i = hash(key), r = 1;
+    while (table[i] != null) {
+      if (table[i].key.equals(key))
+        return table[i].value;
+      i = ((i - 1 + r) % m) + 1);
+      r++;
+    }
+    return null;
+  }
+  
   
 }
