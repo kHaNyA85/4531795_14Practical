@@ -18,6 +18,24 @@ public class ChainedHash{
       int x = Integer.parseInt(key);
       return (x % m) + 1;
     }
+    public void insert(String key, String value) {
+      int i = hash(key);
+      Node head = table[i];
+      Node prev = null;
+
+      while (head != null){
+        if (head.key.eqauls(key)) {
+          head.value = value;
+          return;
+        }
+        prev = head;
+        head = head.next;
+      }
+      Node newNode = new Node(key, value);
+      if (prev == null) 
+        table[i] = newNode;
+      else prev.next = newNode;
+    }
     
   }
 }
