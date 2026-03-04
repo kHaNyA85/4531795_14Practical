@@ -22,6 +22,15 @@ public class OPenHash {
     int x = Integer.parseInt(key);
     return (x % m) + 1;
   }
-  
+  public void insert(String key, String value) {
+    int i = hash(key);
+    int r = 1;
+    while (table[i] != null && !table[i].key.equals(key)) {
+      i = ((i - 1 + r) % m) + 1;
+      r++;
+    }
+    table[i] = new Entry(key, value);
+    size++;
+  }
   
 }
