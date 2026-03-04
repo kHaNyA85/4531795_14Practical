@@ -14,6 +14,10 @@ public class ChainedHash{
       this.m = m;
       table = new Node[m + 1];
     }
+    private int hash(String key) {
+      int x = Integer.parseInt(key);
+      return (x % m) + 1;
+    }
     
   }
 }
