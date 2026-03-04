@@ -1,4 +1,4 @@
-public class OPenHash {
+public class OpenHash {
   
   private static class Entry{
     String key;
@@ -38,7 +38,7 @@ public class OPenHash {
     while (table[i] != null) {
       if (table[i].key.equals(key))
         return table[i].value;
-      i = ((i - 1 + r) % m) + 1);
+      i = ((i - 1 + r) % m) + 1;
       r++;
     }
     return null;
