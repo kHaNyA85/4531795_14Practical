@@ -17,3 +17,18 @@ public class Main {
         }
         return data;
     }
+    static double timeOpen(String[][] data, int entries, int m) {
+        long total = 0;
+        for (int r = 0; r < REPETITIONS; r++) {
+            openHash table = new openHash(m);
+            for (int i = 0; i < entries; i++)
+                table.insert(data[i][0], data[i][1]);
+            long start = System.currentTimeMillis();
+            for (int i = 0; i < entries; i++)
+                table.lookup(data[i][0]);
+            long end = System.currentTimeMillis();
+            total += (end - start);
+        }
+        return total / 1000.0 / REPETITIONS;
+    }
+
